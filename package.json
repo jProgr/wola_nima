@@ -1,6 +1,6 @@
 {
-  "name": "buku-name",
-  "description": "Mini - English dictionary",
+  "name": "wola.nima",
+  "description": "Tono - English dictionary",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/",
@@ -12,7 +12,7 @@
     "check": "go run tools/dict_checker.go"
   },
   "author": "jProgr <8537691@gmail.com> (https://github.com/jProgr)",
-  "repository": "github:jProgr/buku-name",
+  "repository": "github:jProgr/wola_nima",
   "license": "Unlicense",
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",

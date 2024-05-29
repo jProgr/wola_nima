@@ -1,6 +1,6 @@
-# buku-name dictionary
+# wola.nima dictionary
 
-[Mini](https://minilanguage.com/) - English dictionary.
+[Tono](https://jprogr.github.io/tono-language) - English dictionary.
 
 ## Development
 
