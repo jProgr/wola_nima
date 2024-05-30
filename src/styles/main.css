@@ -7,7 +7,7 @@ body {
   color: white;
   font-size: 20px;
   margin: 0;
-  background-color: #15202b;
+  background-color: #3b3b3b;
 }
 
 #main-wrapper {
@@ -170,9 +170,40 @@ input[type=checkbox]:checked::before {
 }
 .word-container {
   margin: .1em 0;
+  border-bottom: solid gray;
 }
 .word-container > p {
   margin: .1em 0;
+}
+.term {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.word {
+  margin-right: 20px;
+  align-self: center;
+}
+.meaning > p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+p.noun:before {
+  content: "n.";
+  font-style: italic;
+  color: gray;
+  padding-right: .5em;
+}
+p.verb:before {
+  content: "v.";
+  font-style: italic;
+  color: gray;
+  padding-right: .5em;
+}
+p.modifier:before {
+  content: "m.";
+  font-style: italic;
+  color: gray;
+  padding-right: .5em;
 }
 
 .word-info {

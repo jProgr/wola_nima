@@ -26,14 +26,14 @@ module.exports = {
       template: 'src/index.pug',
       templateParameters: {
         'dictionary': parse(
-          fs.readFileSync('src/data/mini_dictionary.csv'),
+          fs.readFileSync('src/data/tono_dictionary.csv'),
           {
             delimiter: ';',
             columns: true,
           }
         ),
-        'sentences': getSentences(),
-        'audios': getAvailableAudios(),
+        // 'sentences': getSentences(),
+        // 'audios': getAvailableAudios(),
       },
       minify: {
         collapseBooleanAttributes: true,

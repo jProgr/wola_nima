@@ -3,12 +3,12 @@ head
   meta(charset='utf-8')
   meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
   // Styles will be loaded by webpack
-  link(rel='shortcut icon' href='assets/buku_name_icon_48.png')
+  link(rel='shortcut icon' href='assets/wola_nima_icon_48.png')
   meta(name='description' content='Tono to English dictionary')
   title wola.nima: Tono dictionary
 #main-wrapper
   header
-    h1 buku-name
+    h1 wola.nima
     p.subtitle Tono-English Dictionary
   main
     #search-box
@@ -47,7 +47,7 @@ head
             name='compound-element'
             checked
           )
-          label(for='compound-element') compound words
+          label(for='compound-element') compounds
 
         .option-container
           input(
@@ -60,78 +60,83 @@ head
         .option-container
           input(
             type='checkbox'
-            id='just-mini-element'
-            name='just-mini-element'
+            id='just-tono-element'
+            name='just-tono-element'
           )
-          label(for='just-mini-element') just mini
+          label(for='just-tono-element') only tono
 
-        .option-container
-          input(
-            type='checkbox'
-            id='show-info-element'
-            name='show-info-element'
-            checked
-          )
-          label(for='show-info-element') show info
+        //- .option-container
+        //-   input(
+        //-     type='checkbox'
+        //-     id='show-info-element'
+        //-     name='show-info-element'
+        //-     checked
+        //-   )
+        //-   label(for='show-info-element') show info
     .dictionary-words
       each term in dictionary
         .word-container
-          p #{term.word}: #{term.meaning}
-          .word-info
-            .buttons
-              button(
-                class='link'
-                type='button'
-              ) link
+          .term
+            .word #{term.word}
+            .meaning
+              p.noun #{term.noun}
+              p.verb #{term.verb}
+              p.modifier #{term.modifier}
+          //- .word-info
+          //-   .buttons
+          //-     button(
+          //-       class='link'
+          //-       type='button'
+          //-     ) link
 
-              if audios.includes(term.word)
-                button(
-                  class='listen'
-                  type='button'
-                ) listen
+            //-   if audios.includes(term.word)
+            //-     button(
+            //-       class='listen'
+            //-       type='button'
+            //-     ) listen
 
-            ul.examples
-              each sentence in sentences
-                if sentence.word === term.word
-                  li.example.mini !{sentence.mini}
-                  li.example.en #{sentence.en}
+            //- ul.examples
+            //-   each sentence in sentences
+            //-     if sentence.word === term.word
+            //-       li.example.mini !{sentence.mini}
+            //-       li.example.en #{sentence.en}
 
   footer
-    p.keyboard-shortcuts Keyboard shortcuts
-    dl#shortcuts
-      div
-        dt f
-        dd Focus search box
-      div
-        dt &lt;
-        dd Clear search
-      div
-        dt .
-        dd Toggle exact match
-      div
-        dt ,
-        dd Toggle compound words
-      div
-        dt _
-        dd Toggle other words
-      div
-        dt ?
-        dd Toggle base words
-      div
-        dt $
-        dd Toggle show info
-    p.search-options Search options
-      ul.search-description
-        li Exact match: Matches full words exactly. The query "abc" matches "abc def" but not "abcdef".
-        li Base words: Includes the base words in the search results. Base words do not start with uppercase and are not compounds.
-        li Compound words: Includes the compound words in the search results. Compounds are base words joined by a "-".
-        li Other words: Includes words that do not fall in the other categories in the search results. Usually proper nouns.
-        li Just mini: Matches the query only to Mini words ignoring english meanings.
-        li Show info: Shows or hides extra info of each word: Example sentences, audio and links.
+    //- p.keyboard-shortcuts Keyboard shortcuts
+    //- dl#shortcuts
+    //-   div
+    //-     dt f
+    //-     dd Focus search box
+    //-   div
+    //-     dt &lt;
+    //-     dd Clear search
+    //-   div
+    //-     dt .
+    //-     dd Toggle exact match
+    //-   div
+    //-     dt ,
+    //-     dd Toggle compound words
+    //-   div
+    //-     dt _
+    //-     dd Toggle other words
+    //-   div
+    //-     dt ?
+    //-     dd Toggle base words
+    //-   div
+    //-     dt $
+    //-     dd Toggle show info
+    //- p.search-options Search options
+    //-   ul.search-description
+    //-     li Exact match: Matches full words exactly. The query "abc" matches "abc def" but not "abcdef".
+    //-     li Base words: Includes the base words in the search results. Base words do not start with uppercase and are not compounds.
+    //-     li Compound words: Includes the compound words in the search results. Compounds are base words joined by a "-".
+    //-     li Other words: Includes words that do not fall in the other categories in the search results. Usually proper nouns.
+    //-     li Just mini: Matches the query only to Mini words ignoring english meanings.
+    //-     li Show info: Shows or hides extra info of each word: Example sentences, audio and links.
     .credits
       ul
         li
-          a(target='_blank' rel="noopener" href='https://jprogr.github.io/') By jProgr
+          a(target='_blank' rel="noopener" href='https://jprogr.github.io/tono-language') By jProgr
         li
-          a(target='_blank' rel="noopener" href='https://github.com/jProgr/wola-nima/') v 0.0.1
+          a(target='_blank' rel="noopener" href='https://github.com/jProgr/wola_nima/') v 0.0.1
   // JavaScript will be loaded by webpack

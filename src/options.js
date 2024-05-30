@@ -35,8 +35,8 @@ export class Options {
     return this._elements.other.checked;
   }
 
-  isJustMiniActive() {
-    return this._elements.justMini.checked;
+  isJustTonoActive() {
+    return this._elements.justTono.checked;
   }
 
   get elements() {
@@ -66,11 +66,11 @@ export class Options {
     const other = window.localStorage.getItem('other');
     if (other !== null) this._elements.other.checked = stringToBool(other);
 
-    const justMini = window.localStorage.getItem('justMini');
-    if (justMini !== null) this._elements.justMini.checked = stringToBool(justMini);
+    const justTono = window.localStorage.getItem('justTono');
+    if (justTono !== null) this._elements.justTono.checked = stringToBool(justTono);
 
-    const showInfo = window.localStorage.getItem('showInfo');
-    if (showInfo !== null) this._elements.showInfo.checked = stringToBool(showInfo);
+    // const showInfo = window.localStorage.getItem('showInfo');
+    // if (showInfo !== null) this._elements.showInfo.checked = stringToBool(showInfo);
   }
 
   /**

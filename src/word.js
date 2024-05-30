@@ -1,5 +1,3 @@
-import {isUpperCase} from './util';
-
 /**
  * Enum for word types.
  *
@@ -25,8 +23,7 @@ export class Word {
     this.element = element;
     this.contents = this._getContent(element);
     [this.word] = this.contents;
-    this.rawWord = element.innerText.split(':')[0];
-    this.type = this._getType(this.rawWord);
+    this.type = this._getType(this.word);
   }
 
   /**
@@ -36,10 +33,10 @@ export class Word {
    * @return {WordType}
    */
   _getType(word) {
-    if (isUpperCase(word.substring(0, 1))) return WordType.OTHER;
-    if (word.includes('-')) return WordType.COMPOUND;
+    if (word.length === 4 || word === 'wa') return WordType.BASE;
+    if (word.includes('.')) return WordType.COMPOUND;
 
-    return WordType.BASE;
+    return WordType.OTHER;
   }
 
   /**
@@ -49,14 +46,26 @@ export class Word {
    * @return {Set} Of strings.
    */
   _getContent(element) {
-    const string = element.querySelector('p').innerText;
+    const container = element.querySelector('.term');
+
     let contents = new Set();
 
-    string
-      .replaceAll(parenthesesRegex, '')
-      .split(/[^\w-]/)
-      .map(word => word.trim())
-      .forEach(word => contents.add(word.toLowerCase()));
+    // Add word.
+    const word = container.querySelector('.word').innerText;
+    contents.add(word);
+
+    // Add meanings.
+    const meaningsElement = container.querySelector('.meaning');
+    for (const cssClass of ['.noun', '.verb', '.modifier']) {
+      meaningsElement
+        .querySelector(cssClass)
+        .innerText
+        .replaceAll(parenthesesRegex, '')
+        .split(/[^\w-]/)
+        .map(word => word.trim())
+        .forEach(word => contents.add(word.toLowerCase()));
+    }
+
     if (contents.has('')) contents.delete('');
 
     return contents;

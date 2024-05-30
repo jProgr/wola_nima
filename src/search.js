@@ -33,14 +33,14 @@ export class WordSearcher {
       // Check for exact match.
       if (options.isExactMatchActive()) {
         let doesMatch = false;
-        if (options.isJustMiniActive()) doesMatch = word.word === query;
+        if (options.isJustTonoActive()) doesMatch = word.word === query;
         else doesMatch = word.contents.has(query);
 
         return this._showOrHide(word, doesMatch);
       }
 
       // Partial match.
-      if (options.isJustMiniActive()) return this._showOrHide(word, word.word.includes(query));
+      if (options.isJustTonoActive()) return this._showOrHide(word, word.word.includes(query));
       for (const meaning of word.contents) if (meaning.includes(query)) return word.show();
 
       // If none.

@@ -1,10 +1,10 @@
 import './styles/main.css';
 import {WordSearcher} from './search';
 import {Options} from './options';
-import {removeShortcutKeys, triggerEvent} from './util';
-import {Shortcuts} from './shortcuts';
+import {removeShortcutKeys} from './util';
+// import {Shortcuts} from './shortcuts';
 import {Word} from './word';
-import {WordLinks} from './links';
+// import {WordLinks} from './links';
 
 // Options.
 const options = new Options({
@@ -12,8 +12,8 @@ const options = new Options({
   base: document.getElementById('base-element'),
   compound: document.getElementById('compound-element'),
   other: document.getElementById('other-element'),
-  showInfo: document.getElementById('show-info-element'),
-  justMini: document.getElementById('just-mini-element'),
+  // showInfo: document.getElementById('show-info-element'),
+  justTono: document.getElementById('just-tono-element'),
 });
 
 // Search.
@@ -47,58 +47,58 @@ searchElement.addEventListener('keyup', event => {
   searchCallback();
 });
 
-// Word links.
-new WordLinks(words).showIfAny();
+// // Word links.
+// new WordLinks(words).showIfAny();
 
-// Audio.
-words
-  .forEach(word => {
-    const button = word.element.querySelector('button[class=listen]');
-    if (button === null) return;
+// // Audio.
+// words
+//   .forEach(word => {
+//     const button = word.element.querySelector('button[class=listen]');
+//     if (button === null) return;
 
-    let audioElement = null;
-    let mp4Source;
-    let oggSource;
-    let mp3Source;
+//     let audioElement = null;
+//     let mp4Source;
+//     let oggSource;
+//     let mp3Source;
 
-    button.addEventListener('click', () => {
-      if (audioElement !== null) {
-        audioElement.play();
-        return;
-      }
+//     button.addEventListener('click', () => {
+//       if (audioElement !== null) {
+//         audioElement.play();
+//         return;
+//       }
 
-      audioElement = document.createElement('audio');
+//       audioElement = document.createElement('audio');
 
-      mp4Source = document.createElement('source');
-      mp4Source.type = 'audio/mp4';
-      mp4Source.src = 'assets/audio/' + word.rawWord + '.m4a';
-      audioElement.appendChild(mp4Source);
+//       mp4Source = document.createElement('source');
+//       mp4Source.type = 'audio/mp4';
+//       mp4Source.src = 'assets/audio/' + word.rawWord + '.m4a';
+//       audioElement.appendChild(mp4Source);
 
-      oggSource = document.createElement('source');
-      oggSource.type = 'audio/ogg';
-      oggSource.src = 'assets/audio/' + word.rawWord + '.oga';
-      audioElement.appendChild(oggSource);
+//       oggSource = document.createElement('source');
+//       oggSource.type = 'audio/ogg';
+//       oggSource.src = 'assets/audio/' + word.rawWord + '.oga';
+//       audioElement.appendChild(oggSource);
 
-      mp3Source = document.createElement('source');
-      mp3Source.type = 'audio/mpeg';
-      mp3Source.src = 'assets/audio/' + word.rawWord + '.mp3';
-      audioElement.appendChild(mp3Source);
+//       mp3Source = document.createElement('source');
+//       mp3Source.type = 'audio/mpeg';
+//       mp3Source.src = 'assets/audio/' + word.rawWord + '.mp3';
+//       audioElement.appendChild(mp3Source);
 
-      audioElement.play();
-    });
-  });
+//       audioElement.play();
+//     });
+//   });
 
-// Shortcuts.
-new Shortcuts(searchElement, ...options.elements);
+// // Shortcuts.
+// new Shortcuts(searchElement, ...options.elements);
 
-// Toggle info.
-const wordInfoElements = document.querySelectorAll('div[class=word-info]');
-const showInfoElement = document.getElementById('show-info-element');
-showInfoElement.addEventListener('change', event => {
-  const shouldShow = event.srcElement.checked;
-  wordInfoElements.forEach(element => element.style.display = shouldShow ? 'block' : 'none')
-});
-triggerEvent(showInfoElement, 'change');
+// // Toggle info.
+// const wordInfoElements = document.querySelectorAll('div[class=word-info]');
+// const showInfoElement = document.getElementById('show-info-element');
+// showInfoElement.addEventListener('change', event => {
+//   const shouldShow = event.srcElement.checked;
+//   wordInfoElements.forEach(element => element.style.display = shouldShow ? 'block' : 'none')
+// });
+// triggerEvent(showInfoElement, 'change');
 
 function search(searcher, searchElement, options) {
   debounce(() => searcher.search(
