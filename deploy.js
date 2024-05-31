@@ -73,7 +73,7 @@ function getStartLine(lines) {
 
 function getTagMessage(startLine, lines) {
   let tagMessageLines = [];
-  for (let i = startLine + 1; i <= lines.length; i++) {
+  for (let i = startLine + 1; i + 1 <= lines.length; i++) {
     if (lines[i].startsWith('## ')) break;
     if (lines[i] !== '') tagMessageLines.push(lines[i]);
   }
